@@ -2,7 +2,7 @@ from lxml import html
 import requests
 
 try:
-    subject = raw_input('Enter wikipedia page: ')
+    subject = raw_input('Enter wikipedia page: ') #TODO what happens if page does not exist?
     page = requests.get('https://en.wikipedia.org/wiki/' + subject)
     tree = html.fromstring(page.text)
     links = tree.xpath('//*[@id="mw-content-text"]/p[1]/a[1]/@href')
