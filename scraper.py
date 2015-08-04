@@ -6,6 +6,7 @@ import requests
 should_continue = True
 
 while (should_continue):
+    chosen_link = None
     try:
         subject = raw_input('Enter wikipedia page: ') #TODO what happens if page does not exist?
         page = requests.get('https://en.wikipedia.org/wiki/' + subject)
@@ -15,7 +16,6 @@ while (should_continue):
             page = requests.get('https://en.wikipedia.org/w/index.php?search=' + subject)
             tree = html.fromstring(page.text)
             links = tree.xpath('//*[@class="mw-search-result-heading'[1])
-            print links
         title_xpath = tree.xpath('//*[@id="firstHeading"]/child::*/text()|//*[@id="firstHeading"]/text()')
         count = 0
     except:
